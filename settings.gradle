@@ -1,2 +1,9 @@
 include ':app'
 rootProject.name = "HelloWorld"
+include ':plugin'
+include ':androidlibrary'
+include ':myapplication11'
+
+println "initialization: setting.gradle 被执行！"
+include ':AnnotationProcessorLib'
+include ':annotationlib2'

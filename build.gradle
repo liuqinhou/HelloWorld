@@ -1,26 +1,51 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//apply plugin:'com.plugin.plugin'
+
+//apply plugin:'plugin'
 buildscript {
     ext.kotlin_version = "1.4.32"
     repositories {
         google()
         jcenter()
+//        maven {
+//            url uri('./repo')
+//        }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:4.1.0" //4.1.0
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+        //classpath 'com.plugin.plugin:plugin:0.0.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
 }
 
 allprojects {
     repositories {
         google()
         jcenter()
+        //mavenCentral()
+        //maven {url 'https://maven.google.com'}
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+clean.configure {
+
+}
+
+println "configuration: rootproject_module#build.gradle 被执行！"
+
+println "project androidlibrary dir is = ${project(":androidlibrary").projectDir}"
+
+//配置 app 项目
+//project(":app") {
+//    ext {
+//        appParam = "test app"
+//    }
+//}

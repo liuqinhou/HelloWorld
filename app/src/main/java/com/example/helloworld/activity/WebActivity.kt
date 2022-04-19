@@ -27,5 +27,10 @@ class WebActivity : AppCompatActivity() {
             var intent : Intent = Intent(this, PullParseXmlActivity::class.java )
             startActivity(intent)
         }
+
+        httpdserver.setOnClickListener {
+            var intent : Intent = Intent(this, NanohttpdServerActivity::class.java )
+            startActivity(intent)
+        }
     }
 }

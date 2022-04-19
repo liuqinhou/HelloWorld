@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="annotationlib/src/main/res/layout/activity_main.xml" value="0.24048913043478262" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_nanohttpd_server.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/layout/activity_second.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_test_recycle_view.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/activity_web.xml" value="0.1" />
+        <entry key="myapplication11/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

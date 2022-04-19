@@ -1,8 +1,92 @@
+
+
+//
+//apply plugin:'com.android.application'
+//apply plugin:'kotlin-android'
+//apply plugin:'kotlin-android-extensions'
+
+
+
+buildscript {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+    }
+    dependencies {
+        classpath 'com.plugin.plugin:plugin:0.0.1'
+    }
+}
+
+//buildscript {
+//    dependencies {
+//        classpath fileTree(dir: 'libs', include: '*.jar')
+//    }
+//}
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+//    id 'plugin'
+   // id "com.plugin.MyPlugin"
 }
+
+apply plugin:"plugin"
+
+//apply plugin:"myplugin"
+//apply plugin:"groovytestlib"
+
+
+//apply plugin:"myplugin"
+
+class HelloExtensioin {
+    Boolean enable = true
+    String text = ""
+}
+
+
+
+class HelloPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(org.gradle.api.Project project) {
+        project.extensions.create("hello", HelloExtensioin)
+        project.task("welcom") {
+            doLast {
+                HelloExtensioin ext = project.extensions.hello;
+                println ext.enable ? "Hello ${ext.text}!" : "HelloPlugin is disabled."
+            }
+        }
+    }
+}
+
+apply plugin:HelloPlugin
+
+hello {
+    enable = true
+    text = "Gradle"
+}
+
+task distribution  {
+    println "We build the zip with version=$version"
+}
+
+task release(dependsOn: 'distribution')  {
+    println 'We release now'
+}
+
+release.configure {}
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}
+
+
 
 android {
     compileSdkVersion 30
@@ -31,10 +115,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
 
+    //implementation fileTree(include: '*.jar',  dir: 'libs')
+    implementation fileTree(include: '*.aar',  dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
@@ -42,10 +129,48 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    implementation 'com.squareup.okhttp3:okhttp:4.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation'org.nanohttpd:nanohttpd:2.2.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+
 }
+
+println "configuration: app_module#build.gradle 被执行！"
+
+afterEvaluate {
+    if(it.hasProperty('group')) {
+        println('has group')
+        it.task('B') {
+            doLast {
+                println 'excute B'
+            }
+        }
+    } else {
+        println 'do not have group'
+    }
+}
+
+class Example {
+    static void main(String[] args) {
+        // Using a simple println statement to print output to the console
+        println('Hello World');
+    }
+}
+def name ='qinhou'
+
+def add(a, b) {
+
+}
+
+apply from:'../config.gradle'
+ext {
+    userName = "luo xiu yun"
+}
+
+//println "config ext userName = ${project("../config.gradle").ext.userName}"

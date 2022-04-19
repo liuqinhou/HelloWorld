@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+project(':androidlibrary') {
+   // task hello
+}
+
+task hello {
+    //println tasks.getByPath("hello").path
+    ext.property = "myvalue"
+    println("wo shi shuai ge")
+    //inputs.properties()
+}
+
+hello.configure {
+
+}
+
+hello {
+
+}
+
+hello.doFirst {
+    println "hallo world"
+}
+
+println "configuration: androidlibrary_module#build.gradle 被执行！"
+
+File bd = getBuildDir()
+println "buildDir = ${bd.getAbsolutePath()}"
+
+String name = getName()
+println "project name = $name"
+
+setDescription '这是一个测试案例'
+String desc = getDescription()
+println desc
+
+String path = getPath()
+println "project path = $path"
+println "absoluteProjectPath is = ${getProjectDir().getAbsolutePath()}"
+
+println "RootDir is = ${getRootDir()}"
+println "RootProject is = ${getRootProject()}"
+
+
+
+task test3 {
+    //设置inputs
+    inputs.property("name", "hjy")
+    inputs.property("age", 20)
+    //设置outputs
+    outputs.file("$buildDir/test/tttt.txt")
+
+    doLast {
+        println "exec task task1"
+    }
+}
+
+task test2 {
+    doLast {
+        println "exec task task2"
+    }
+}

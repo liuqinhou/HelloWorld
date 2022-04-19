@@ -29,4 +29,10 @@
         android:text="sax方式解析xml"
         android:id="@+id/saxparsexml"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转httpd服务页"
+        android:id="@+id/httpdserver"/>
+
 </LinearLayout>

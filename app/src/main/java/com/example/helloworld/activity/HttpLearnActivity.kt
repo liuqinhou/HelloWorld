@@ -3,6 +3,7 @@ package com.example.helloworld.activity
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.cardview.widget.CardView
 import com.example.helloworld.R
 import kotlinx.android.synthetic.main.activity_http_learn.*
 import java.io.BufferedReader
@@ -16,6 +17,8 @@ class HttpLearnActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_http_learn)
+
+        var cardView:CardView
 
         send_Request.setOnClickListener {
             thread {

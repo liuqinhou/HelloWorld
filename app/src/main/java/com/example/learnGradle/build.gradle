@@ -1,0 +1,24 @@
+class HelloExtensioin {
+    Boolean enable = true
+    String text = ""
+}
+
+class HelloPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(org.gradle.api.Project project) {
+        project.extensions.create("hello", HelloExtensioin)
+        project.task("welcom") {
+            doLast {
+                HelloExtensioin ext = project.extensions.hello;
+                println ext.enable ? "Hello ${ext.text}!" : "HelloPlugin is disabled."
+            }
+        }
+    }
+}
+
+apply plugin:HelloPlugin
+hello {
+    enable = true
+    text = "Gradle"
+}

@@ -23,7 +23,7 @@ class TestService1 : Service() {
     override fun onCreate() {
         super.onCreate()
         Log.d("MyService", "onCreate executed")
-        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        /*val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel("my_service", "前台Service通知",
                 NotificationManager.IMPORTANCE_DEFAULT)
@@ -38,14 +38,16 @@ class TestService1 : Service() {
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.banana_pic))
             .setContentIntent(pi)
             .build()
-        startForeground(1, notification)
+        startForeground(1, notification)*/
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("MyService", "onStartCommand executed")
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
+        Log.d("MyService", "onDestroy executed")
         super.onDestroy()
     }
 }

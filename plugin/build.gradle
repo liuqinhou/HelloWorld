@@ -1,0 +1,55 @@
+//plugins {
+//    id 'java-library'
+//}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {url 'https://maven.google.com'}
+        jcenter()
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {url 'https://maven.google.com'}
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:3.0.1'
+}
+
+apply plugin:"maven"
+
+//install {
+//    repositories.mavenInstaller {
+//        pom.version = "0.0.1"
+//        pom.artifactId = "myplugin"
+//        pom.groupId = "com.qinhou.plugin"
+//    }
+//}
+
+group='com.plugin.plugin'
+version='0.0.1'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri("../repo"))
+        }
+    }
+}
+
+println "configuration: plugin_module#build.gradle 被执行！"
+
+
+

@@ -12,6 +12,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 //import android.app.ActivityThread.main
 import android.os.Handler
+import android.os.HandlerThread
 import android.os.PersistableBundle
 import android.util.Log
 import com.example.helloworld.activity.TestFragmentActivity
@@ -30,6 +31,8 @@ class MainActivity : BaseActivity() {
         Log.e(TAG, "mainactivity oncreate")
         Log.d("qinhouliu","mainactivity --- $taskId")
         setContentView(R.layout.activity_main)
+        var thread = HandlerThread("testThread")
+        var looper = thread.looper
 
         btn1.setOnClickListener{Toast.makeText(this, "按下了按钮", Toast.LENGTH_SHORT).show()}
         btnFinish.setOnClickListener { finish() }

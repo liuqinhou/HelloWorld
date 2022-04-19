@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.HandlerThread
+import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.helloworld.adapter.Test1ArrayAdapter
@@ -31,6 +33,7 @@ class ForthActivity : BaseActivity() {
         list.adapter = adapter
         list.setOnItemClickListener { _, _, position: Int,_ ->
             Toast.makeText(this, "你点击的item是：${date[position].name}", Toast.LENGTH_SHORT ).show()
+
         }
     }
 

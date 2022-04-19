@@ -1,0 +1,4 @@
+ext {
+    userName = "liuqinhou"
+    age = "31"
+}
