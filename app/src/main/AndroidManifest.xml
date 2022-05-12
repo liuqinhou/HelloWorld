@@ -8,7 +8,10 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- android:name="android.test.InstrumentationTestRunner" -->
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:targetPackage="com.example.clientapp" />
 
     <application
         android:allowBackup="true"
@@ -18,10 +21,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
+        <activity
+            android:name=".MainActivity4Test"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AndroidUnitTestActivity"
+            android:exported="true" /> <!-- 用于引入测试库 -->
+        <uses-library
+            android:name="android.test.runner"
+            android:required="false" />
+
         <service
             android:name=".service.NanoHttpservice"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".activity.NanohttpdServerActivity"
@@ -37,9 +50,7 @@
         <service
             android:name=".service.TestService1"
             android:enabled="true"
-            android:exported="true"/>
-<!--            android:process=":customservice"/>-->
-
+            android:exported="true" /> <!-- android:process=":customservice"/> -->
         <activity android:name=".activity.PlayVideoActivity" />
         <activity android:name=".activity.PlayAudioActivity" />
         <activity android:name=".activity.CameraAlbumActivity" />
